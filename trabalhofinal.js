@@ -97,11 +97,16 @@ function retornaMenorCaminho() {
     const cidade1 = $("#origem").children("option:selected").val();
     const cidade2 = $("#destino").children("option:selected").val();
     const menorCaminho = encontraMenorCaminho(
-      grafo,
-      cidade1,
-      cidade2
+        grafo,
+        cidade1,
+        cidade2
     );
     console.log(menorCaminho);
     $("#menorcaminho").text(menorCaminho.path);
-    $("#menordistancia").text(menorCaminho.distancia + " km");
-  }
+    if (menorCaminho.distancia == "Infinity") {
+        $("#menordistancia").text("0 km");
+    }
+    else {
+        $("#menordistancia").text(menorCaminho.distancia + " km");
+    }
+}
