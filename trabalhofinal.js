@@ -101,7 +101,6 @@ function retornaMenorCaminho() {
         cidade1,
         cidade2
     );
-    console.log(menorCaminho);
     $("#menorcaminho").text(menorCaminho.path);
     if (menorCaminho.distancia == "Infinity") {
         $("#menordistancia").text("0 km");
