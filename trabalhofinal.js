@@ -75,7 +75,7 @@ const encontraMenorCaminho = (grafo, nohInicial, nohFinal) => {
     return results;
 };
 
-const grafo = {
+var grafo = {
     Capinopolis: { Ituiutaba: 30, Centralina: 40 },
     Ituiutaba: { Capinopolis: 30, MonteAlegre: 85, Douradinhos: 90 },
     Itumbiara: { Tupaciguara: 55, Centralina: 20 },
@@ -108,4 +108,29 @@ function retornaMenorCaminho() {
     else {
         $("#menordistancia").text(menorCaminho.distancia + " km");
     }
+}
+
+function addCidade() {
+    optionText = $("#cityname").val();
+    optionValue = $("#cityname").val();
+    vizinho1 = $("#neighbor1").val();
+    distancia1 = Number($("#distance1").val());
+    vizinho2 = $("#neighbor2").val();
+    distancia2 = Number($("#distance2").val())
+    $('#origem').append(new Option(optionText, optionValue))
+    $('#destino').append(new Option(optionText, optionValue))
+
+    let objeto = {
+        [optionText]: {
+            [vizinho1]: distancia1,
+            [vizinho2]: distancia2,
+        }
+    }
+    Object.assign(grafo, objeto);
+    console.log(grafo);
+
+    $("input").val('')
+    $('.alert').alert()
+    $('.alert').removeClass("d-none")
+
 }
